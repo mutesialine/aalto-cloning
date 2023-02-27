@@ -4,13 +4,14 @@ import Data from "data/HeroData";
 import { useState } from "react";
 export default function Hero() {
   const [img, setImage] = useState(0);
-  function getImageForward(){
-   setImage((prevImg) => prevImg + 1);    
+  function getImageForward() {
+    if (img < Data.length-1) setImage((prevImg) => prevImg + 1);
   }
-   function getImageBackWard() {
-    setImage((prevImg) => prevImg - 1);
-  
-   }
+
+
+  function getImageBackWard() {
+     if (img >= Data.length-1 ) setImage((prevImg) => prevImg - 1);
+  }
   return (
     <div className="w-full relative">
       <div className="flex relative">
@@ -27,7 +28,9 @@ export default function Hero() {
         <p>Donations help them continue their studies during the crisis</p>
         <div className="flex gap-x-8 px-16">
           <button onClick={getImageBackWard}>Backward</button>
-          <button onClick={getImageForward} className="p-4">forward </button>
+          <button onClick={getImageForward} className="p-4">
+            forward{" "}
+          </button>
         </div>
       </div>
     </div>
